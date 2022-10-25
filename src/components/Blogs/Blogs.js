@@ -2,9 +2,9 @@ import React from 'react';
 
 const Blogs = () => {
     return (
-        <div className='grid grid-cols-4'>
-            <div>
-                <div>
+        <div className='grid grid-cols-1 lg:grid lg:grid-cols-2 gap-8'>
+            <div className='border-2 rounded-lg p-4 bg-gray-800 text-white'>
+                <div className='mb-4'>
                     1. What is CORS?
                 </div>
                 <div>
@@ -12,8 +12,8 @@ const Blogs = () => {
                 </div>
             </div>
 
-            <div>
-                <div>
+            <div className='border-2 rounded-lg p-4 bg-gray-800 text-white'>
+                <div className='mb-4'>
                     2. Why we use FireBase? What are the alternatives of FireBase?
                 </div>
                 <div>
@@ -32,15 +32,15 @@ const Blogs = () => {
                 </div>
             </div>
 
-            <div>
-                <div>3. How does Private Route work?</div>
+            <div className='border-2 rounded-lg p-4 bg-gray-800 text-white'>
+                <div className='mb-4'>3. How does Private Route work?</div>
                 <div>
                     <p>The private route component is similar to the public route, the only change is that redirect URL and authenticate condition. If the user is not authenticated he will be redirected to the login page and the user can only access the authenticated routes If he is authenticated (Logged in).</p>
                 </div>
             </div>
 
-            <div>
-                <div>4.What is Node? How does it work?</div>
+            <div className='border-2 rounded-lg p-4 bg-gray-800 text-white'>
+                <div className='mb-4'>4.What is Node? How does it work?</div>
                 <div>
                     <p>Javascript has existed since 1995 and has since taken over as the dominant language for web development. For much of its life, JavaScript was used mainly for client-side scripting inside  tags executing in web browsers. This limitation meant that developers were often working in many different languages and frameworks between the front-end (client-side) and backend (server-side) aspects of a web application.
 
