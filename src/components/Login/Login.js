@@ -4,7 +4,7 @@ import { AuthContext } from "../../Context/UserContext";
 
 const Login = () => {
 
-    const {login} = useContext(AuthContext);
+    const {login, setUser} = useContext(AuthContext);
 
     const handleSubmit = (event) =>{
         event.preventDefault();
@@ -14,7 +14,9 @@ const Login = () => {
         login(email, password)
         .then(result => {
             const user = result.user;
-            console.log(user);
+            form.reset();
+            setUser(user);
+            alert('successfully logged in')
         })
         .catch(e => console.error(e));
     }
@@ -70,10 +72,10 @@ const Login = () => {
                 <hr className="w-2/5 m-3"></hr>
                 </div>
                 <div className="form-control ">
-                <button className="btn btn-sm btn-outline">Login</button>
+                <button className="btn btn-sm btn-outline">Login with google</button>
                 </div>
                 <div className="form-control">
-                <button className="btn btn-sm btn-outline">Login with Github</button>
+                <button className="btn btn-sm btn-outline mt-2">Login with Github</button>
                 </div>
             </form>
           </div>
