@@ -1,6 +1,6 @@
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
-import React, { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/UserContext";
 
 const googleProvider = new GoogleAuthProvider();
@@ -9,6 +9,11 @@ const githubProvider = new GithubAuthProvider();
 
 const Login = () => {
     const navigate = useNavigate();
+    const location = useLocation();
+    const [error, setError] = useState(null);
+
+    const from = location?.state?.from.pathname || '/'
+
     const { login, googleLogin, githubLogin } = useContext(AuthContext);
 
   const handleSubmit = (event) => {
@@ -20,10 +25,14 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         form.reset();
-        navigate('/courses')
+        navigate(from, {replace:true})
+        setError('');
         alert("successfully logged in");
       })
-      .catch((e) => console.error(e));
+      .catch((e) => {
+        console.log(e);
+        setError(e.message);
+      });
   };
 
   const handleGoogleLogin = () => {
@@ -112,6 +121,7 @@ const Login = () => {
                   Login with Github
                 </Link>
               </div>
+              <p className="text-red-600 mt-3">{error}</p>
             </form>
           </div>
         </div>

@@ -7,7 +7,7 @@ const Navbar = () => {
     const {user, logOut} = useContext(AuthContext);
 
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-gray-300 rounded-b-2xl">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -66,7 +66,9 @@ const Navbar = () => {
       <div className="navbar-end">
         {user?.uid?
             <>
-            <p>{user.email}</p>
+            <div className="tooltip tooltip-bottom" data-tip={user.displayName}>
+            <img  className="tooltip w-10 rounded-full" data-tip="hello" src={user.photoURL} alt=""></img>
+            </div>
             <Link onClick={logOut} className="btn btn-sm mx-4">Log Out</Link>
             </>
             :

@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/UserContext";
 
 const Register = () => {
+    const [error, setError] = useState();
 
-    const {createUser} = useContext(AuthContext);
+    const {createUser, updateUserProfile} = useContext(AuthContext);
 
     const handleSubmit =(event)=>{
         event.preventDefault();
@@ -15,17 +16,38 @@ const Register = () => {
         const password = form.password.value;
         const confirmPassword = form.confirm.value;
 
+        if(password.length < 6){
+            setError("password should contain more than 6 characters")
+            return;
+        }
+
         if(password !== confirmPassword){
-            alert("password didn't match")
+            setError("password didn't match")
+            return;
         }
         else{
             createUser(email, password)
             .then(result =>{
                 const user = result.user;
+                setError('');
                 form.reset();
+                handleProfileUpdate(name, photo)
             })
-            .catch(error => console.error(error));
+            .catch(error => {
+                console.error(error)
+                setError(error.message);
+            });
         }
+    }
+
+    const handleProfileUpdate = (name, photo) =>{
+        const profile = {
+            displayName: name,
+            photoURL: photo
+        }
+        updateUserProfile(profile)
+        .then(()=>{ })
+        .catch(e=>console.log(e));
     }
 
   return (
@@ -103,6 +125,7 @@ const Register = () => {
                 <button className="btn btn-outline">Register</button>
                 </div>
             </form>
+            <p className="text-red-500">{error}</p>
           </div>
         </div>
       </div>

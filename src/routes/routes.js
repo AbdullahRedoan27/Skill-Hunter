@@ -6,6 +6,9 @@ import Home from "../components/Home/Home";
 import Login from "../components/Login/Login";
 import Register from "../components/Register/Register";
 import Main from "../layout/Main";
+import CourseDetails from '../components/CourseDetails/CourseDetails';
+import CheckOut from "../components/CheckOut/CheckOut";
+import PrivateRoute from "./PrivateRoute";
 
 const routes = createBrowserRouter([
     {
@@ -18,7 +21,20 @@ const routes = createBrowserRouter([
             },
             {
                 path:'/Courses',
+                loader:()=>fetch('http://localhost:5000/courses'),
                 element:<Courses></Courses>
+            },
+            {
+                path:'/Courses/:id',
+                loader: async ({params}) => {
+                    return fetch(`http://localhost:5000/courses/${params.id}`)},
+                element:<CourseDetails></CourseDetails>
+            },
+            {
+                path:'/checkout/:id',
+                loader: async ({params}) => {
+                    return fetch(`http://localhost:5000/courses/${params.id}`)},
+                element:<PrivateRoute><CheckOut></CheckOut></PrivateRoute>
             },
             {
                 path:'/Blogs',
