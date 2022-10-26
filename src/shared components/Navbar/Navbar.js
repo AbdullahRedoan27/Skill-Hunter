@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/UserContext";
+import img from '../../images/logo.png'
 
 const Navbar = () => {
 
@@ -43,7 +44,8 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <Link to="" className="btn btn-ghost normal-case text-xl">
+        <img className="w-14 ml-2 hidden lg:block" src={img} alt=''></img>
+        <Link to="" className="btn btn-ghost normal-case lg:text-2xl text-xl">
           Skill Hunter
         </Link>
       </div>
@@ -67,7 +69,7 @@ const Navbar = () => {
         {user?.uid?
             <>
             <div className="tooltip tooltip-bottom" data-tip={user.displayName}>
-            <img  className="tooltip w-10 rounded-full" data-tip="hello" src={user.photoURL} alt=""></img>
+            <img  className="tooltip lg:w-10 w-8 rounded-full" data-tip="hello" src={user.photoURL} alt=""></img>
             </div>
             <Link onClick={logOut} className="btn btn-sm mx-4">Log Out</Link>
             </>

@@ -3,7 +3,7 @@ import React from "react";
 const FAQs = () => {
   return (
     <div>
-      <div className="border-2 rounded-lg lg:w-1/4 mx-auto bg-gray-900 text-white">
+      <div className="border-2 rounded-lg lg:w-3/4 mx-auto bg-gray-900 text-white">
         <div className="collapse">
           <input type="checkbox" />
           <div className="collapse-title text-xl font-medium">
@@ -18,7 +18,7 @@ const FAQs = () => {
         </div>
       </div>
 
-      <div className="border-2 rounded-lg lg:w-1/4 mx-auto bg-gray-900 text-white">
+      <div className="border-2 rounded-lg lg:w-3/4 mx-auto bg-gray-900 text-white">
         <div className="collapse">
           <input type="checkbox" />
           <div className="collapse-title text-xl font-medium">
@@ -34,7 +34,7 @@ const FAQs = () => {
         </div>
       </div>
 
-      <div className="border-2 rounded-lg lg:w-1/4 mx-auto bg-gray-900 text-white">
+      <div className="border-2 rounded-lg lg:w-3/4 mx-auto bg-gray-900 text-white">
         <div className="collapse">
           <input type="checkbox" />
           <div className="collapse-title text-xl font-medium">
@@ -48,7 +48,7 @@ const FAQs = () => {
         </div>
       </div>
 
-      <div className="border-2 rounded-lg lg:w-1/4 mx-auto bg-gray-900 text-white">
+      <div className="border-2 rounded-lg lg:w-3/4 mx-auto bg-gray-900 text-white">
         <div className="collapse">
           <input type="checkbox" />
           <div className="collapse-title text-xl font-medium">
@@ -62,7 +62,7 @@ const FAQs = () => {
         </div>
       </div>
 
-      <div className="border-2 rounded-lg lg:w-1/4 mx-auto bg-gray-900 text-white">
+      <div className="border-2 rounded-lg lg:w-3/4 mx-auto bg-gray-900 text-white">
         <div className="collapse">
           <input type="checkbox" />
           <div className="collapse-title text-xl font-medium">

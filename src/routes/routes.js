@@ -9,6 +9,7 @@ import Main from "../layout/Main";
 import CourseDetails from '../components/CourseDetails/CourseDetails';
 import CheckOut from "../components/CheckOut/CheckOut";
 import PrivateRoute from "./PrivateRoute";
+import NotFoundPage from "../components/NotFoundPage/NotFoundPage";
 
 const routes = createBrowserRouter([
     {
@@ -51,6 +52,10 @@ const routes = createBrowserRouter([
             {
                 path:'/Register',
                 element:<Register></Register>
+            },
+            {
+                path:'*',
+                element: <NotFoundPage></NotFoundPage>
             }
         ]
     }
