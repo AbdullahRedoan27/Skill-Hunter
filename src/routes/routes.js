@@ -10,6 +10,7 @@ import CourseDetails from '../components/CourseDetails/CourseDetails';
 import CheckOut from "../components/CheckOut/CheckOut";
 import PrivateRoute from "./PrivateRoute";
 import NotFoundPage from "../components/NotFoundPage/NotFoundPage";
+import PDFFile from "../components/PDF/PDFFile";
 
 const routes = createBrowserRouter([
     {
@@ -22,19 +23,26 @@ const routes = createBrowserRouter([
             },
             {
                 path:'/Courses',
-                loader:()=>fetch('http://localhost:5000/courses'),
+                loader:()=>fetch('https://skill-hunter-server.vercel.app/courses'),
                 element:<Courses></Courses>
             },
             {
                 path:'/Courses/:id',
                 loader: async ({params}) => {
-                    return fetch(`http://localhost:5000/courses/${params.id}`)},
+                    return fetch(`https://skill-hunter-server.vercel.app/courses/${params.id}`)},
                 element:<CourseDetails></CourseDetails>
+            },
+            {
+                path:'/pdf/:id',
+                loader: async({params}) => {
+                    return fetch(`https://skill-hunter-server.vercel.app/courses/${params.id}`)
+                },
+                element:<PDFFile></PDFFile>
             },
             {
                 path:'/checkout/:id',
                 loader: async ({params}) => {
-                    return fetch(`http://localhost:5000/courses/${params.id}`)},
+                    return fetch(`https://skill-hunter-server.vercel.app/courses/${params.id}`)},
                 element:<PrivateRoute><CheckOut></CheckOut></PrivateRoute>
             },
             {

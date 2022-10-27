@@ -69,11 +69,13 @@ const Navbar = () => {
       <div className="navbar-end">
         {user?.uid?
             <>
-            <div className="tooltip tooltip-bottom" data-tip={user?.displayName}>
+            <div className="tooltip tooltip-left" data-tip={user?.displayName}>
             {user?.photoURL?
               <img  className="tooltip lg:w-10 w-8 rounded-full border border-gray-200" src={user?.photoURL} alt=""></img>
               :
-              <FaUser></FaUser>
+              <div className="tooltip tooltip-bottom tooltip-info" data-tip={`(user image unavailable)`}>
+                <FaUser></FaUser>
+              </div>
             }
             </div>
             <Link onClick={logOut} className="btn btn-sm mx-4">Log Out</Link>

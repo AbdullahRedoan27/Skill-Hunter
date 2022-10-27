@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/UserContext";
+import toast from 'react-hot-toast';
 
 const Register = () => {
     const [error, setError] = useState();
@@ -17,12 +18,12 @@ const Register = () => {
         const confirmPassword = form.confirm.value;
 
         if(password.length < 6){
-            setError("password should contain more than 6 characters")
+            toast("password should contain more than 6 characters")
             return;
         }
 
         if(password !== confirmPassword){
-            setError("password didn't match")
+            toast("password didn't match")
             return;
         }
         else{
@@ -31,11 +32,12 @@ const Register = () => {
                 const user = result.user;
                 setError('');
                 form.reset();
+                toast('Succesfully Registered')
                 handleProfileUpdate(name, photo)
             })
             .catch(error => {
                 console.error(error)
-                setError(error.message);
+                toast(error.message);
             });
         }
     }
@@ -125,7 +127,6 @@ const Register = () => {
                 <button className="btn btn-outline">Register</button>
                 </div>
             </form>
-            <p className="text-red-500">{error}</p>
           </div>
         </div>
       </div>
