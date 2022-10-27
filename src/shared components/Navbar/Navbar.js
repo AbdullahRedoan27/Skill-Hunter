@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import {FaUser} from 'react-icons/fa';
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/UserContext";
 import img from '../../images/logo.png'
@@ -68,8 +69,12 @@ const Navbar = () => {
       <div className="navbar-end">
         {user?.uid?
             <>
-            <div className="tooltip tooltip-bottom" data-tip={user.displayName}>
-            <img  className="tooltip lg:w-10 w-8 rounded-full" data-tip="hello" src={user.photoURL} alt=""></img>
+            <div className="tooltip tooltip-bottom" data-tip={user?.displayName}>
+            {user?.photoURL?
+              <img  className="tooltip lg:w-10 w-8 rounded-full border border-gray-200" src={user?.photoURL} alt=""></img>
+              :
+              <FaUser></FaUser>
+            }
             </div>
             <Link onClick={logOut} className="btn btn-sm mx-4">Log Out</Link>
             </>
