@@ -1,5 +1,5 @@
 import React from "react";
-import {Link, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import { FaSpaceShuttle, FaStarHalf, FaStar} from "react-icons/fa";
 import Pdf from "react-to-pdf";
 

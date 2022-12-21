@@ -11,7 +11,7 @@ const githubProvider = new GithubAuthProvider();
 const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const [error, setError] = useState(null);
+    const [error, setError] = useState("");
 
     const from = location?.state?.from.pathname || '/'
 
@@ -31,11 +31,17 @@ const Login = () => {
         toast("successfully logged in");
       })
       .catch((e) => {
-        console.log(e);
-        toast(e.message);
+        console.log(e.message);
+        if(e.message === "Firebase: Error (auth/wrong-password)."){
+          console.log(error);
+          toast.error("Wrong password. please try again.")
+        }
+        else if(e.message === "Firebase: Error (auth/user-not-found)."){
+          console.log(error);
+          toast.error("No user is registered with this user name. Please try to register first.")
+        }
       });
   };
-
   const handleGoogleLogin = () => {
     googleLogin(googleProvider)
       .then((result) => {
