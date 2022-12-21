@@ -41,7 +41,7 @@ const Login = () => {
           toast.error("No user is registered with this user name. Please try to register first.")
         }
       });
-  };
+  }
   const handleGoogleLogin = () => {
     googleLogin(googleProvider)
       .then((result) => {
